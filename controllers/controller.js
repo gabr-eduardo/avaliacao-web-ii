@@ -1,4 +1,4 @@
-var path = require("path");
+let path = require("path");
 const data = require("./dados.json");
 
 const controller = {};
@@ -20,6 +20,13 @@ controller.getRoupasById = (req, res) => {
       .status(404)
       .sendFile(path.resolve(__dirname + "/../views/not-found/index.html"));
   }
+};
+
+controller.createRoupa = (req, res) => {
+  const novaRoupa = req.body;
+  novaRoupa.id = data.length + 1;
+  data.push(novaRoupa);
+  res.status(200).redirect("/");
 };
 
 module.exports = controller;
