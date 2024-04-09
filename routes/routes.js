@@ -7,8 +7,6 @@ routes.get("/", controller.getAllRoupas);
 routes.get("/:id", controller.getRoupasById);
 routes.post("/", controller.createRoupa);
 routes.put("/:id", controller.updateRoupa);
-/*
-routes.delete("/pessoas/:id", controller.deletePessoa);
-*/
+routes.delete("/:id", controller.deleteRoupa);
 
 module.exports = routes;

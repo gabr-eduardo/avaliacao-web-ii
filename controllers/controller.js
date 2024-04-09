@@ -35,7 +35,7 @@ controller.updateRoupa = (req, res) => {
   const id = parseInt(req.params.id);
   const index = data.findIndex((item) => item.id === id);
 
-  if (index > 0) {
+  if (index >= 0) {
     const roupaAtualizada = req.body;
     data[index] = roupaAtualizada;
     res.status(200).send("OK");
@@ -43,6 +43,21 @@ controller.updateRoupa = (req, res) => {
     res
       .status(404)
       .sendFile(path.resolve(__dirname + "/../views/not-found/index.html"));
+  }
+};
+
+// deleta a roupa
+controller.deleteRoupa = (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = data.findIndex((item) => item.id === id);
+
+  if (index >= 0) {
+    data.splice(index, 1);
+    res.status(200).send("OK");
+  } else {
+    res
+      .status(404)
+      .sendFile(path.resolve(__dirname + "/../views/notfound.html"));
   }
 };
 
