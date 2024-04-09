@@ -6,8 +6,8 @@ const routes = express.Router();
 routes.get("/", controller.getAllRoupas);
 routes.get("/:id", controller.getRoupasById);
 routes.post("/", controller.createRoupa);
+routes.put("/:id", controller.updateRoupa);
 /*
-routes.put("/pessoas/:id", controller.updatePessoa);
 routes.delete("/pessoas/:id", controller.deletePessoa);
 */
 

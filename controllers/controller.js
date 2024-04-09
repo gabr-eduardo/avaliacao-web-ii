@@ -22,11 +22,28 @@ controller.getRoupasById = (req, res) => {
   }
 };
 
+// cadastra a roupa
 controller.createRoupa = (req, res) => {
   const novaRoupa = req.body;
   novaRoupa.id = data.length + 1;
   data.push(novaRoupa);
   res.status(200).redirect("/");
+};
+
+// atualiza roupa
+controller.updateRoupa = (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = data.findIndex((item) => item.id === id);
+
+  if (index > 0) {
+    const roupaAtualizada = req.body;
+    data[index] = roupaAtualizada;
+    res.status(200).send("OK");
+  } else {
+    res
+      .status(404)
+      .sendFile(path.resolve(__dirname + "/../views/not-found/index.html"));
+  }
 };
 
 module.exports = controller;
